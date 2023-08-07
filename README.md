@@ -59,7 +59,7 @@ The model parameters are saved in `clim_model_533_merged_5.2.mat`, including the
 `get_clim_map.m` gives the climate world map for a given climate dataset (`res`, `ds`) according to the trained network (`net`) and clustering model (`model`).
 
 ### Plotting
-`bulk_plot.m` generates the plots in `plots` folder.
+`bulk_plot.m` generates the plots in `plots` folder. The uploaded plots are based on 1991-2020 climate normals.
 
 `imlegend.m` makes legend beneath the world map.
 
