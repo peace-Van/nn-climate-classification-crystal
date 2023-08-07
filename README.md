@@ -6,7 +6,7 @@ Updated methodology and results
 This repo is created with MATLAB R2022b and may be compatible with other versions.
 The Mapping Toolbox, Statistics and Machine Learning Toolbox and Deep Learning Toolbox are needed.
 
-## Updates regard to `nn-climate-classification`
+## Updade on `nn-climate-classification`
 
 - Neural network structure simplified significantly. Check `net.mat` for the details.
 - Larger and newer dataset for training. Used climate normals of 1971-2000, 1972-2001, 1973-2002, ..., 1991-2020 and the corresponding land cover of 2001, 2002, 2003, ..., 2021. It's 21x volume of data compared to `nn-climate-classification`. Climate dataset version is updated to CRU TS v4.07 while land cover dataset version is updated to MCD12C1 v6.1.
