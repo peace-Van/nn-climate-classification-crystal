@@ -1,5 +1,5 @@
 # Köppen meets Neural Network: Revision of the Köppen Climate Classification by Neural Networks
-Updated methodology and results (1991-2020 normals)
+Updated methodology and results
 
 ![](/plots/xx.png)
 
