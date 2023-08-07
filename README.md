@@ -21,6 +21,17 @@ Upon clicking or entering, a climate chart of the place will pop up.
 
 Note that the queried internal dataset is of 0.5° × 0.5° resolution so the query result can be approximate for towns and cities.
 
+## The climate types
+
+|                             | **A** tropical | **C** subtropical | **D** continental | **E** temperate | **F** subarctic | **Gh**/**Gk** arctic |
+|-----------------------------|----------------|-------------------|-------------------|-----------------|-----------------|----------------------|
+| **f** humid/oceanic         | **Af**         | **Cf**            | /                 | **Efh**/**Efk** | **Ff**          | /                    |
+| **m** moderate/semi-oceanic | **Am**         | **Cm**            | /                 | **Emh**/**Emk** | **Fm**          | /                    |
+| **s** seasonal              | **As**         | **Cs**            | **Ds**            | **Es**          | **Fsh**/**Fsk** | /                    |
+| **W** arid                  | **AW**         | **CW**            | **DW**            | **EW**          | /               | /                    |
+| **S** semi-arid             | /              | /                 | **DSh**/**DSk**   | /               | /               | /                    |
+| **H** highland              | /              | /                 | **DH**            | **EH**          | /               | /                    |
+
 ## Reproduce the work
 
 ### Dataset construction
