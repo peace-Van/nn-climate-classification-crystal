@@ -1,10 +1,18 @@
 # Köppen meets Neural Network: Revision of the Köppen Climate Classification by Neural Networks
-Supplementary materials for the paper
+Updated methodology and results
 
-![](/plots/core/x.png)
+![](/plots/xglobe.png)
 
-This repo is created with MATLAB R2021b and may be compatible with other versions.
+This repo is created with MATLAB R2022b and may be compatible with other versions.
 The Mapping Toolbox, Statistics and Machine Learning Toolbox and Deep Learning Toolbox are needed.
+
+## Updates regard to `nn-climate-classification`
+
+- Neural network structure simplified significantly. Check `net.mat` for the details.
+- Larger dataset for training. Used climate normals of 1971-2000, 1972-2001, 1973-2002, ..., 1991-2020 and the corresponding land cover of 2001, 2002, 2003, ..., 2021. It's 21x volume of data compared to `nn-climate-classification`. Climate dataset version is updated to CRU TS v4.07 while land cover dataset version is updated to MCD12C1 V6.1.
+- Feature extraction: use the activation of the `concat` layer instead of the `prelu` layer (simplified to `relu` in this new version). What the original `prelu` layer outputs is more related to biome instead of climate. `concat` layer, which is closer to the input climate data, is more suitable here. PCA of the output features shows much less information and only 15 PCA components (428 were used in `nn-climate-classification`) are taken for the clustering, which agrees with the common sense that there are not that many useful climate features.
+- 5 × 3 × 3 SOM clustering followed by crystal clustering compared to the original 4 × 3 × 2 SOM only. The standard deviations of the first three PCA components of `concat` features follow a ratio of 3 : 2 : 2, but 3 × 2 × 2 SOM gives too broad climate types. Crystal clustering (T = 5.2) on the 45 subtypes gives 26 climate types, which I find optimal. Crystal clustering shows its advantage that it takes care of the spatial distribution of observations by considering system entropy.
+- A bit code refactorization.
 
 ## Explore the world's climate
 
@@ -16,31 +24,28 @@ Note that the queried internal dataset is of 0.5° × 0.5° resolution so the qu
 ## Reproduce the work
 
 ### Dataset construction
-Original global climate dataset [CRU TS](https://crudata.uea.ac.uk/cru/data/hrg/) and land cover dataset [MCD12C1](https://lpdaac.usgs.gov/products/mcd12c1v006/) can be downloaded from the links.
+Original global climate dataset [CRU TS](https://crudata.uea.ac.uk/cru/data/hrg/) and land cover dataset [MCD12C1](https://lpdaac.usgs.gov/products/mcd12c1v061/) can be downloaded from the links.
 
 The climate variables are transformed to MATLAB matrices (`tmp.mat`, `pre.mat`, `pet.mat`) by `dat2mat.m`.
 
-Note that the code worked on the 1901-2020 CRU TS dataset; you may need to modify it for the newly available 1901-2021 dataset.
-
 `hdf2veg.m` handles MCD12C1 and the transformed land cover data are saved as `veg.mat`.
 
-They are packed into `dataset.mat` by `audit.m`.
-
-`res2datastore.m` generates `datastore.mat` from `dataset.mat` for neural network training.
+The following data preparation procedures are packed into `prepare_data.m`.
 
 ### Neural network training
 Load the untrained network `net.mat` into Deep Network Designer.
 
-Load the datastore as both training set and validation set.
+Load `datastore_train.mat` and `datastore_valid.mat`. Here validation set is the 1991-2020 climate normals vs land cover conditions of 2021.
 
-In the training options dialog, set the `Solver` as `adam`, `LearnRateSchedule` as `piecewise` and `OutputNetwork` as `best-validation`. You may also explore altering other settings.
+In the training options dialog, set the `Solver` as `adam`, `ValidationFrequency` as 5451, `MaxEpochs` as 20, `MiniBatchSize` as 64, `L2Regularization` as 0, `LearnRateSchedule` as `piecewise` and `OutputNetwork` as `best-validation`. You may also explore altering other settings.
 
 Export the trained network as `trainedNet.mat`.
 
 ### Feature generation and clustering
-Run `net2features.m` and subsequently `features2clim.m`.
+Run `net2model.m`.
 
-Save the output parameters of `features2clim.m` as `clim.mat`, `centroids.mat` and `trainedRes.mat`.
+The model parameters are saved in `clim_model_533_merged_5.2.mat`, including the PCA transform and how crystal clustering merges SOM subtypes.
+`get_clim_map.m` gives the climate world map for a given climate dataset (`res`, `ds`) according to the trained network (`net`) and clustering model (`model`).
 
 ### Plotting
 `bulk_plot.m` generates the plots in `plots` folder.
@@ -49,8 +54,6 @@ Save the output parameters of `features2clim.m` as `clim.mat`, `centroids.mat` a
 
 ### Others
 `get_clim.m` gives the climate type for a specific monthly series of climate variables (`tmp, pre, pet` in a 3 × 12 matrix).
-
-`stat.xlsx` provides comparison with the Köppen-Geiger scheme and the land cover from another perspective (Section 4.b.3 and 4.b.4 of the paper).
 
 `koppen.m` and `trewartha.m` figure out the Köppen-Geiger and Köppen-Trewartha types for the climate dataset.
 
