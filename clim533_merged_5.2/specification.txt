@@ -1,0 +1,46 @@
+1 - subarctic cold continental - Fsk
+2 - subarctic/cool humid continental - Fsh
+3 - arid continental (continental desert) - DW
+4 - (warm) temperate dry-wet season (Mediterranean) - Es
+5 - tropical dry-wet season (savanna) - As
+6 - semi-arid cool continental (steppe) - DSk
+7 - semi-arid warm continental (steppe) - DSh
+8 - subtropical dry-wet season (desert fringe) - Cs
+9 - extreme arid and hot (hot desert) - AW
+10 - warm semi-oceanic - Emh
+11 - moderate subtropical - Cm
+12 - arid temperate (temperate desert) - EW
+13 - continental dry-wet season (monsoonal steppe) - Ds
+14 - subarctic semi-oceanic - Fm
+15 - humid subtropical - Cf
+16 - cool semi-oceanic - Emk
+17 - arid subtropical (subtropical desert) - CW
+18 - cold arctic (icecap) - Gk
+19 - warm-summer arctic (tundra) - Gh
+20 - continental highland - DH
+21 - warm oceanic (Mediterranean) - Ef
+22 - moderate tropical - Am
+23 - temperate highland - EH
+24 - subarctic oceanic - Ff
+25 - cool oceanic - Efk
+26 - humid tropical (rainforest) - Af
+
+
+tropical A, subtropical C, continental D, temperate E, subarctic F, arctic G
+humid(oceanic) f, moderate(semi-oceanic) m, seasonal s, arid W, semi-arid S, highland H
+warmer/hotter/better growing condition h, cooler/colder/worse growing condition k
+
+
+Af, Am, As, AW
+Cf, Cm, Cs, CW
+DS(k, h), DW, Ds, DH
+Ef(k, h), Em(k, h), Es, EW, EH
+Fs(k, h), Ff, Fm
+G(k, h)
+
+
+Ff 24, Fm 14, Efk 25, Fsh 2, Emk 16, Gh 19, 
+Gk 18, Fsk 1, DH 20, Efh 21, EH 23, Emh 10, 
+Cf 15, Ds 13, Cm 11, Af 26, Es 4, DSk 6, 
+DSh 7, Am 22, As 5, Cs 8, EW 12, DW 3, 
+CW 17, AW 9
