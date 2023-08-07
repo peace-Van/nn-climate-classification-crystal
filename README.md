@@ -1,7 +1,7 @@
 # Köppen meets Neural Network: Revision of the Köppen Climate Classification by Neural Networks
 Updated methodology and results
 
-![](/plots/xglobe.png)
+![](/plots/xx.png)
 
 This repo is created with MATLAB R2022b and may be compatible with other versions.
 The Mapping Toolbox, Statistics and Machine Learning Toolbox and Deep Learning Toolbox are needed.
