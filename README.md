@@ -17,10 +17,10 @@ The Mapping Toolbox, Statistics and Machine Learning Toolbox and Deep Learning T
 
 |                                                                        |   **A** low-latitude   |    **D** mid-latitude   |      **F** high-latitude      |
 |------------------------------------------------------------------------|:----------------------:|:-----------------------:|:-----------------------------:|
-| **f** humid/best growing condition                                     |   **Af**  warm humid   |    **Df**  temperate    | **Ff**  continental monsoonal |
-| **m** moderate/precipitation not summer-concentrated                   | **Am**  warm semi-arid |     **Dm**  oceanic     |   **Fm**  humid continental   |
-| **s** seasonal/summer-rain                                             | **As**  dry-wet season |     **Ds**  highland    |         **Fs**  tundra        |
-| **x** arid/worst growing condition                                     |    **Ax**  warm arid   | **Dx**  dry continental |         **Fx**  icecap        |
+| **f** humid / best growing condition                                   |   **Af**  warm humid   |    **Df**  temperate    | **Ff**  continental monsoonal |
+| **m** moderate / precipitation not summer-concentrated                 | **Am**  warm semi-arid |     **Dm**  oceanic     |   **Fm**  humid continental   |
+| **s** seasonal / summer-rain                                           | **As**  dry-wet season |     **Ds**  highland    |         **Fs**  tundra        |
+| **x** arid / worst growing condition                                   |    **Ax**  warm arid   | **Dx**  dry continental |         **Fx**  icecap        |
 
 ## Explore the world's climate
 
