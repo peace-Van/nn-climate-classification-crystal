@@ -6,13 +6,21 @@ Upgraded methodology and results
 This repo is created with MATLAB R2022b and may be compatible with other versions.
 The Mapping Toolbox, Statistics and Machine Learning Toolbox and Deep Learning Toolbox are needed.
 
-## Upgrades on `nn-climate-classification`
+## Upgrades to `nn-climate-classification`
 
 - Neural network structure simplified significantly. Check `net.mat` for the details.
 - Larger and newer dataset for training. Used climate normals of 1971-2000, 1972-2001, 1973-2002, ..., 1991-2020 and the corresponding land cover of 2001, 2002, 2003, ..., 2021. It's 21x volume of data compared to `nn-climate-classification`. Climate dataset version is updated to CRU TS v4.07 while land cover dataset version is updated to MCD12C1 v6.1.
 - Feature extraction: use the activation of the `concat` layer instead of the `prelu` layer (simplified to `relu` in this new version). What the original `prelu` layer outputs is more related to biome instead of climate. The `concat` layer, which is closer to the input climate data, is more suitable here. PCA of the output features shows much less information and only 15 PCA components (428 were used in `nn-climate-classification`) are taken for the clustering. It's reasonable that there are not that many meaningful climate features.
 - 5 × 3 × 3 SOM clustering followed by crystal clustering compared to the original 4 × 3 × 2 SOM only. The standard deviations of the first three PCA components of `concat` features follow a ratio of 3 : 2 : 2, but 3 × 2 × 2 SOM gives too broad climate types. Crystal clustering (T = 5.2) on the 45 subtypes gives 26 climate types, which I find optimal. Crystal clustering shows its advantage that it takes care of the spatial distribution of observations by considering system entropy. The well-documented `crystalcluster.m` is a general function that applies to any dataset (given it is not too large; `pdist` is used in the function to calculate pairwise distances between observations, which takes O(N^2) space.)
 - A bit code refactorization.
+- Side note: The result of 3 × 2 × 2 SOM is also given in the `clim322` and `plots322` folders. This categorization has a very clear structure and easy to understand, but loses many details. For instance, it does not distinguish between tropical and subtropical climates. The climate types are specified in the below table.
+
+|                                                                        | **A** low-latitude    | **D** mid-latitude     | **F** high-latitude          |
+|------------------------------------------------------------------------|-----------------------|------------------------|------------------------------|
+| **f** humid/best growing condition                                     | **Af** warm humid     | **Df** temperate       | **Ff** continental monsoonal |
+| **m** moderate/winter-concentrated or evenly-distributed precipitation | **Am** warm semi-arid | **Dm** oceanic         | **Fm** humid continental     |
+| **s** seasonal/summer-rain                                             | **As** dry-wet season | **Ds** highland        | **Fs** tundra                |
+| **x** arid/worst growing condition                                     | **Ax** warm arid      | **Dx** dry continental | **Fx** icecap                |
 
 ## Explore the world's climate
 
