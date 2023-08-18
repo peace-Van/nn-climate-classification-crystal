@@ -15,12 +15,12 @@ The Mapping Toolbox, Statistics and Machine Learning Toolbox and Deep Learning T
 - A bit code refactorization.
 - Side note: The result of 3 × 2 × 2 SOM is also given in the `clim322` and `plots322` folders. This categorization has a very clear structure and easy to understand, but loses many details. For instance, it does not distinguish between tropical and subtropical climates. The climate types are specified in the below table.
 
-|                                                                        | **A** low-latitude    | **D** mid-latitude     | **F** high-latitude          |
-|------------------------------------------------------------------------|-----------------------|------------------------|------------------------------|
-| **f** humid/best growing condition                                     | **Af** warm humid     | **Df** temperate       | **Ff** continental monsoonal |
-| **m** moderate/winter-concentrated or evenly-distributed precipitation | **Am** warm semi-arid | **Dm** oceanic         | **Fm** humid continental     |
-| **s** seasonal/summer-rain                                             | **As** dry-wet season | **Ds** highland        | **Fs** tundra                |
-| **x** arid/worst growing condition                                     | **Ax** warm arid      | **Dx** dry continental | **Fx** icecap                |
+|                                                                        |   **A** low-latitude   |    **D** mid-latitude   |      **F** high-latitude      |
+|------------------------------------------------------------------------|:----------------------:|:-----------------------:|:-----------------------------:|
+| **f** humid/best growing condition                                     |   **Af**  warm humid   |    **Df**  temperate    | **Ff**  continental monsoonal |
+| **m** moderate/winter-concentrated or evenly-distributed precipitation | **Am**  warm semi-arid |     **Dm**  oceanic     |   **Fm**  humid continental   |
+| **s** seasonal/summer-rain                                             | **As**  dry-wet season |     **Ds**  highland    |         **Fs**  tundra        |
+| **x** arid/worst growing condition                                     |    **Ax**  warm arid   | **Dx**  dry continental |         **Fx**  icecap        |
 
 ## Explore the world's climate
 
