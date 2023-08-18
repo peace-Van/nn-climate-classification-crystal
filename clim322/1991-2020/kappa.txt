@@ -1,0 +1,13 @@
+UNWEIGHTED COHEN'S KAPPA
+--------------------------------------------------------------------------------
+Observed agreement (po) = 0.8284
+Random agreement (pe) = 0.1265
+Agreement due to true concordance (po-pe) = 0.7020
+Residual not random agreement (1-pe) = 0.8735
+Cohen's kappa = 0.8036
+kappa error = 0.0017
+kappa C.I. (alpha = 0.0500) = 0.8003     0.8069
+Maximum possible kappa, given the observed marginal frequencies = 0.9740
+k observed as proportion of maximum possible = 0.8251
+z (k/kappa error) = 479.9921    p = 0.0000
+Reject null hypotesis: observed agreement is not accidental
