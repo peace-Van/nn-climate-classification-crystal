@@ -22,6 +22,8 @@ The Mapping Toolbox, Statistics and Machine Learning Toolbox and Deep Learning T
 | **s** seasonal / precipitation concentrated in the warm season         | **As**  dry-wet season |     **Ds**  highland    |         **Fs**  tundra        |
 | **x** arid / worst growing condition                                   |    **Ax**  warm arid   | **Dx**  dry continental |         **Fx**  icecap        |
 
+- For comparison, results of kmeans are also given as `kmeans12.png` and `kmeans26.png`. kmeans12, compared with 3 × 2 × 2 SOM, has a warm monsoonal climate similar to Köppen-Geiger's *Am/Cwa* while the temperate **Df** type is removed. This blurs the boundaries between warm, temperate and oceanic climates and thus is not favored. kmeans26 poses significant flaws as the icecap and hot desert types are both fractionated. SOM shows its advantage and fitness here by structurizing the topology of climate types.
+
 ## Explore the world's climate
 
 `interactive_map.m` starts an interactive map for users to query the climate conditions of certain places by clicking on the map or entering in the console (the latter uses `OpenStreetMap` engine to locate input places).
