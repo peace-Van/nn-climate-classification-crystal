@@ -11,7 +11,7 @@ batch_size = 64;
 
 fprintf('Loading original data...\n')
 load('pre.mat'); load('pet.mat'); load('tmp.mat');
-load('tmp.mat'); load('tmx.mat'); load('elev.mat');
+load('tmn.mat'); load('tmx.mat'); load('elev.mat');
 fprintf('\n')
 
 %% prepare dataset
