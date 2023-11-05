@@ -69,7 +69,7 @@ elseif model == "kmeans"
     figure; dendrogram(Z, 0)
 end
 
-%w = groupcounts(Y') / length(Y);
+w = groupcounts(Y') / length(Y);
 mst = my_minspantree(centroids, ones(k, 1));
 mst.Edges.Weight = -1 ./ mst.Edges.Weight;
 figure; p = plot(mst);      %, 'NodeLabel', labels);
