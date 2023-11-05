@@ -77,76 +77,78 @@ function cls = koppen_class(climatology)
     elseif pr_percent >= 0.3
         thresh = thresh + 140;
     end
-    if total_pr < 0.5 * thresh          % arid, BW
-        cls = cls + "BW";
-        if mean_temp < 18
-            cls = cls + "k";
+    if t_monthly(1, 12) < 10                % arctic, E
+        cls = cls + "E";
+        if t_monthly(1, 12) < 0
+            cls = cls + "F";
         else
-            cls = cls + "h";
-        end
-    elseif total_pr < thresh            % semi-arid, BS
-        cls = cls + "BS";
-        if mean_temp < 18
-            cls = cls + "k";
-        else
-            cls = cls + "h";
-        end
+            cls = cls + "T";
+        end  
     else
-        if t_monthly(1, 1) >= 18                                      % tropical, A
-            cls = cls + "A";
-            if min(t_monthly(2, :)) >= 60
-                cls = cls + "f";
+        if total_pr < 0.5 * thresh          % arid, BW
+            cls = cls + "BW";
+            if mean_temp < 18
+                cls = cls + "k";
             else
-                thresh_2 = 100 - total_pr / 25;
-                if min(t_monthly(2, :)) < thresh_2
+                cls = cls + "h";
+            end
+        elseif total_pr < thresh            % semi-arid, BS
+            cls = cls + "BS";
+            if mean_temp < 18
+                cls = cls + "k";
+            else
+                cls = cls + "h";
+            end
+        else
+            if t_monthly(1, 1) >= 18                                      % tropical, A
+                cls = cls + "A";
+                if min(t_monthly(2, :)) >= 60
+                    cls = cls + "f";
+                else
+                    thresh_2 = 100 - total_pr / 25;
+                    if min(t_monthly(2, :)) < thresh_2
+                        cls = cls + "w";
+                    else
+                        cls = cls + "m";
+                    end
+                end                
+            elseif t_monthly(1, 1) > -3                                   % temperate, C
+                cls = cls + "C";
+                if max(t_monthly(2, 10:12)) > 10 * min(t_monthly(2, 1:3))
                     cls = cls + "w";
+                elseif max(t_monthly(2, 1:3)) > 3 * min(t_monthly(2, 10:12)) && min(t_monthly(2, 10:12)) < 30
+                    cls = cls + "s";
                 else
-                    cls = cls + "m";
+                    cls = cls + "f";
                 end
-            end                
-        elseif t_monthly(1, 12) < 10                                  % arctic, E
-            cls = cls + "E";
-            if t_monthly(1, 12) < 0
-                cls = cls + "F";
-            else
-                cls = cls + "T";
-            end            
-        elseif t_monthly(1, 1) > -3                                   % temperate, C
-            cls = cls + "C";
-            if max(t_monthly(2, 10:12)) > 10 * min(t_monthly(2, 1:3))
-                cls = cls + "w";
-            elseif max(t_monthly(2, 1:3)) > 3 * min(t_monthly(2, 10:12)) && min(t_monthly(2, 10:12)) < 30
-                cls = cls + "s";
-            else
-                cls = cls + "f";
-            end
-            if sum(t_monthly(1, :) > 10) < 4
-                cls = cls + "c";
-            elseif t_monthly(1, 12) > 22
-                cls = cls + "a";
-            else
-                cls = cls + "b";
-            end
-        else                                                          % continental, D
-            cls = cls + "D";
-            if max(t_monthly(2, 10:12)) > 10 * min(t_monthly(2, 1:3))
-                cls = cls + "w";
-            elseif max(t_monthly(2, 1:3)) > 3 * min(t_monthly(2, 10:12)) && min(t_monthly(2, 10:12)) < 30
-                cls = cls + "s";
-            else
-                cls = cls + "f";
-            end
-            if sum(t_monthly(1, :) > 10) < 4
-                if t_monthly(1, 1) <= -38
-                    cls = cls + "d";
-                else
+                if sum(t_monthly(1, :) > 10) < 4
                     cls = cls + "c";
+                elseif t_monthly(1, 12) > 22
+                    cls = cls + "a";
+                else
+                    cls = cls + "b";
                 end
-            elseif t_monthly(1, 12) > 22
-                cls = cls + "a";
-            else
-                cls = cls + "b";
+            else                                                          % continental, D
+                cls = cls + "D";
+                if max(t_monthly(2, 10:12)) > 10 * min(t_monthly(2, 1:3))
+                    cls = cls + "w";
+                elseif max(t_monthly(2, 1:3)) > 3 * min(t_monthly(2, 10:12)) && min(t_monthly(2, 10:12)) < 30
+                    cls = cls + "s";
+                else
+                    cls = cls + "f";
+                end
+                if sum(t_monthly(1, :) > 10) < 4
+                    if t_monthly(1, 1) <= -38
+                        cls = cls + "d";
+                    else
+                        cls = cls + "c";
+                    end
+                elseif t_monthly(1, 12) > 22
+                    cls = cls + "a";
+                else
+                    cls = cls + "b";
+                end 
             end 
-        end 
+        end
     end    
 end
