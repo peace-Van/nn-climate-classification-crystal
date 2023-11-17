@@ -75,7 +75,7 @@ mst.Edges.Weight = -1 ./ mst.Edges.Weight;
 figure; p = plot(mst);      %, 'NodeLabel', labels);
 layout(p, 'force', 'WeightEffect', 'direct')
 
-[idx, mst, G] = crystalcluster(double(centroids), [], T, 'backtrack', inf);
+[idx, mst, ~, ~] = crystalcluster(double(centroids), [], T, 'backtrack', inf, false);
 mst.Edges.Weight = -1 ./ mst.Edges.Weight;
 figure; p = plot(mst, 'NodeLabel', labels);
 layout(p, 'force', 'WeightEffect', 'direct')
